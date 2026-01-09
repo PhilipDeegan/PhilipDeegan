@@ -1,14 +1,17 @@
 name: Metrics
 
 on:
+  create:
   schedule: # execute every 24 hours
-    - cron: '0 0 * * *'
+    - cron: "* */24 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: generate
+    name: generate-github-cards
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v2
